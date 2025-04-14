@@ -1,0 +1,6 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="33.413267999999995">
+<testsuite name="flows\add-purchase-flow.spec.js" timestamp="2025-04-14T07:56:51.376Z" hostname="chromium" tests="1" failures="0" skipped="0" time="26.952" errors="0">
+<testcase name="Add Purchase Flow › Add new purchase with valid data" classname="flows\add-purchase-flow.spec.js" time="26.952">
+</testcase>
+</testsuite>
+</testsuites>

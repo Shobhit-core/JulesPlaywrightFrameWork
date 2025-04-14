@@ -1,0 +1,74 @@
+{
+  "info": {
+    "name": "JulesAI Login API Tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Successful Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": {
+          "raw": "{{base_url}}",
+          "host": ["{{base_url}}"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"operationName\":\"login\",\"variables\":{\"email\":\"qa@julesai.com\",\"password\":\"QaJULES2023!\"},\"extensions\":{\"persistedQuery\":{\"version\":1,\"sha256Hash\":\"ab50d832c7fe27534f4a42b330d919766ad8406649899c4ee8a50a19ae103470\"}}}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "const response = pm.response.json();",
+              "pm.test(\"Login successful and token returned\", function () {",
+              "    pm.expect(response.data.login.token).to.be.a('string');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Invalid Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": {
+          "raw": "{{base_url}}",
+          "host": ["{{base_url}}"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"operationName\":\"login\",\"variables\":{\"email\":\"wrong@julesai.com\",\"password\":\"wrongpass\"},\"extensions\":{\"persistedQuery\":{\"version\":1,\"sha256Hash\":\"ab50d832c7fe27534f4a42b330d919766ad8406649899c4ee8a50a19ae103470\"}}}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Should return error for wrong credentials\", function () {",
+              "    const res = pm.response.json();",
+              "    pm.expect(res.errors).to.be.an('array');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    }
+  ]
+}

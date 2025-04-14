@@ -1,0 +1,32 @@
+[
+    {
+      "testName": "Valid login",
+      "email": "qa@julesai.com",
+      "password": "QaJULES2023!",
+      "expectedResult": "success"
+    },
+    {
+      "testName": "Invalid email",
+      "email": "invalid@email.com",
+      "password": "QaJULES2023!",
+      "expectedResult": "failure"
+    },
+    {
+      "testName": "Invalid password",
+      "email": "qa@julesai.com",
+      "password": "wrongpassword",
+      "expectedResult": "failure"
+    },
+    {
+      "testName": "Empty email",
+      "email": "",
+      "password": "QaJULES2023!",
+      "expectedResult": "failure"
+    },
+    {
+      "testName": "Empty password",
+      "email": "qa@julesai.com",
+      "password": "",
+      "expectedResult": "failure"
+    }
+  ]

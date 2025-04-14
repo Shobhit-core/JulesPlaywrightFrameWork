@@ -1,0 +1,26 @@
+{
+  "name": "jules-ai-qa-assignment",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "api-tests": "node tests/api/newman/run-api-tests.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "1.51.1",
+    "csv-parse": "5.5.3",
+    "newman": "^4.6.1",
+    "newman-reporter-html": "^1.0.5",
+    "prettier": "3.3.0"
+  },
+  "dependencies": {
+    "csv-parse": "^5.6.0"
+  }
+}

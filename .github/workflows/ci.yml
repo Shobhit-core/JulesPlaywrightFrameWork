@@ -1,0 +1,50 @@
+name: Jules AI QA Automation CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  ui-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+    - name: Install dependencies
+      run: npm install
+    - name: Run Playwright tests
+      run: npx playwright test
+    - name: Upload UI test results
+      uses: actions/upload-artifact@v2
+      if: always()
+      with:
+        name: ui-test-results
+        path: |
+          reports/ui/html-report/
+          reports/ui/junit-results.xml
+          test-results/
+
+  api-tests:
+    runs-on: ubuntu-latest
+    needs: ui-tests
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+    - name: Install Newman
+      run: npm install -g newman newman-reporter-htmlextra
+    - name: Run API tests
+      run: node tests/api/newman/run-api-tests.js
+    - name: Upload API test results
+      uses: actions/upload-artifact@v2
+      if: always()
+      with:
+       name: api-test-results
+       path: reports/api/html-report.html
