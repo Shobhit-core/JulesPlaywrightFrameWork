@@ -50,21 +50,17 @@ test.describe('Add Purchase Flow', () => {
   });
 
   test('Add new purchase with valid data', async () => {
-// Marks test as slow (triples default timeout)
     
     try {
 
       
-      // Click add purchase button - using more reliable selector
       const addButton = page.locator('button:has-text("Add a purchase")').first();
       await expect(addButton).toBeVisible();
       await addButton.click();
             
-      // Fill form
       await fillPurchaseForm(page, PURCHASE_DATA);
       
     } catch (error) {
-      // Capture screenshot on failure
       await page.screenshot({ path: 'test-results/add-purchase-failure.png', fullPage: true });
       throw error;
     }
@@ -72,7 +68,6 @@ test.describe('Add Purchase Flow', () => {
 });
 
 async function fillPurchaseForm(page, formData) {
-  // Helper to fill fields safely
   const fillField = async (selector, value) => {
     await page.locator(selector).first().fill(value);
   };
@@ -82,7 +77,6 @@ async function fillPurchaseForm(page, formData) {
     await page.getByRole('option', { name: value }).first().click();
   };
 
-  // Basic Information
   await page.getByRole('button', { name: 'Local' }).click();
   await page.locator('[data-test-id="OperationModal\\.shipmentMode"]').getByRole('combobox').locator('div').nth(1).click();
   await page.getByRole('option', { name: 'Bulk cargo' }).click();
@@ -97,12 +91,14 @@ async function fillPurchaseForm(page, formData) {
   await page.locator('[data-test-id="OperationModal\\.billingEntity"]').getByRole('combobox').locator('div').nth(1).click();
   await page.locator('[data-test-id="OperationModal\\.billingEntity"]').getByRole('textbox', { name: 'Search' }).fill('ABCDEa');
   await page.locator('//div[text()="ABCDEa"]').first().click();
+  
   await page.locator('[data-test-id="OperationModal\\.operationIncoterm"]').getByRole('combobox').locator('div').nth(1).click();
   await page.locator('[data-test-id="OperationModal\\.operationIncoterm"]').getByRole('textbox', { name: 'Search' }).fill('EXW');
   await page.locator('//div[text()="EXW"]').last().click();
   await page.locator('[data-test-id="OperationModal\\.site"]').getByRole('combobox').locator('div').nth(1).click();
   await page.locator('[data-test-id="OperationModal\\.site"]').getByRole('textbox', { name: 'Search' }).fill('TRM Delhi');
   await page.locator('//div[text()="TRM Delhi"]').last().click();
+  
   await page.locator('[data-test-id="OperationModal\\.assignedTo"]').getByRole('textbox', { name: 'Search' }).click();
   await page.locator('[data-test-id="OperationModal\\.assignedTo"]').getByRole('textbox', { name: 'Search' }).fill('Erick S');
   await page.locator('//div[text()="Erick S"]').last().click();
