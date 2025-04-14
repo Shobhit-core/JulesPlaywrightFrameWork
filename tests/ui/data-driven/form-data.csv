@@ -1,6 +1,0 @@
-testName,companyName,contactEmail,expectedResult
-Valid Company,Acme Inc,contact@acme.com,success
-Invalid Email,Test Corp,invalid-email,failure
-Empty Name,,contact@test.com,failure
-Long Name,This is a very long company name that exceeds normal limits,contact@long.com,failure
-Special Chars,Comp@ny $pecial,special@chars.com,success

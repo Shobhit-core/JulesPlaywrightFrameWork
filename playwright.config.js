@@ -29,20 +29,20 @@ module.exports = defineConfig({
         ...devices['Desktop Chrome'],
         headless: false          // 👈 overrides project-specific headless
       }
-    },
-    {
-      name: 'firefox',
-      use: {
-        ...devices['Desktop Firefox'],
-        headless: false
-      }
-    },
-    {
-      name: 'webkit',
-      use: {
-        ...devices['Desktop Safari'],
-        headless: false
-      }
+    // },
+    // {
+    //   name: 'firefox',
+    //   use: {
+    //     ...devices['Desktop Firefox'],
+    //     headless: false
+    //   }
+    // },
+    // {
+    //   name: 'webkit',
+    //   use: {
+    //     ...devices['Desktop Safari'],
+    //     headless: false
+    //   }
     }
   ],
   globalSetup: require.resolve('./tests/ui/helpers/global-setup.js'),

@@ -1,6 +1,14 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="33.413267999999995">
-<testsuite name="flows\add-purchase-flow.spec.js" timestamp="2025-04-14T07:56:51.376Z" hostname="chromium" tests="1" failures="0" skipped="0" time="26.952" errors="0">
-<testcase name="Add Purchase Flow › Add new purchase with valid data" classname="flows\add-purchase-flow.spec.js" time="26.952">
+<testsuites id="" name="" tests="4" failures="0" skipped="0" errors="0" time="32.355898">
+<testsuite name="flows\add-purchase-flow.spec.js" timestamp="2025-04-14T09:15:42.716Z" hostname="chromium" tests="1" failures="0" skipped="0" time="26.626" errors="0">
+<testcase name="Add Purchase Flow › Add new purchase with valid data" classname="flows\add-purchase-flow.spec.js" time="26.626">
+</testcase>
+</testsuite>
+<testsuite name="flows\login-dashboard-flow.spec.js" timestamp="2025-04-14T09:15:42.716Z" hostname="chromium" tests="3" failures="0" skipped="0" time="15.786" errors="0">
+<testcase name="UI Login Flow › Login page elements" classname="flows\login-dashboard-flow.spec.js" time="3.082">
+</testcase>
+<testcase name="UI Login Flow › Successful UI login" classname="flows\login-dashboard-flow.spec.js" time="6.63">
+</testcase>
+<testcase name="UI Login Flow › Failed login shows error" classname="flows\login-dashboard-flow.spec.js" time="6.074">
 </testcase>
 </testsuite>
 </testsuites>
